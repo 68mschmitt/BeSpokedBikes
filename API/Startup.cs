@@ -39,6 +39,7 @@ namespace API
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ISalesPersonRepository, SalesPersonRepository>();
             services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
 
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddControllers();

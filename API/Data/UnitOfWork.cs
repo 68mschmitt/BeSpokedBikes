@@ -24,6 +24,8 @@ namespace API.Data
 
         public ISalesPersonRepository SalesPersonRepository => new SalesPersonRepository(_context, _mapper);
 
+        public IReportRepository ReportRepository => new ReportRepository(_context);
+
         public async Task<bool> Complete()
         {
             return await _context.SaveChangesAsync() > 0;

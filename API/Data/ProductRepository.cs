@@ -21,6 +21,9 @@ namespace API.Data
         public async Task CreateProduct(ProductDto product)
         {
             var existingProduct = await GetProductByNameAsync(product.Name);
+            // We want a number between 0 and 100. If the user puts in something else than they will be adjusted
+            if (product.CommissionPercentage < 0) product.CommissionPercentage = 0;
+            else if (product.CommissionPercentage > 100) product.CommissionPercentage = 100;
             if (existingProduct == null) _context.Entry(_mapper.Map<Product>(product)).State = EntityState.Added;;
         }
 
@@ -39,6 +42,9 @@ namespace API.Data
 
         public void UpdateProduct(Product product)
         {
+            // We want a number between 0 and 100. If the user puts in something else than they will be adjusted
+            if (product.CommissionPercentage < 0) product.CommissionPercentage = 0;
+            else if (product.CommissionPercentage > 100) product.CommissionPercentage = 100;
             _context.Entry(product).State = EntityState.Modified;
         }
     }
