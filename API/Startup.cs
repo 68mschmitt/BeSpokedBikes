@@ -32,9 +32,14 @@ namespace API
         {
             services.AddDbContext<BeSpokedDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IDiscountRepository, DiscountRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ISalesPersonRepository, SalesPersonRepository>();
+            services.AddScoped<ISaleRepository, SaleRepository>();
+
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddControllers();
             services.AddSwaggerGen(c =>

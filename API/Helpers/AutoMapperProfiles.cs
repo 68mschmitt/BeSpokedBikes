@@ -10,6 +10,9 @@ namespace API.Helpers
         {
             CreateMap<Customer, CustomerDto>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FirstName + ' ' + src.LastName));
+            CreateMap<ProductDto, Product>();
+            CreateMap<SalesPersonDto, SalesPerson>();
+            CreateMap<SaleDto, Sale>();
         }
     }
 }

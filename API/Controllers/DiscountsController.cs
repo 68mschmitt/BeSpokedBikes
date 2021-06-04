@@ -8,16 +8,16 @@ namespace API.Controllers
 {
     public class DiscountsController : BaseApiController
     {
-        private readonly IDiscountRepository _discountRepository;
-        public DiscountsController(IDiscountRepository discountRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public DiscountsController(IUnitOfWork unitOfWork)
         {
-            _discountRepository = discountRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Discount>>> GetDiscounts()
         {
-            return Ok(await _discountRepository.GetDiscountsAsync());
+            return Ok(await _unitOfWork.DiscountRepository.GetDiscountsAsync());
         }
     }
 }

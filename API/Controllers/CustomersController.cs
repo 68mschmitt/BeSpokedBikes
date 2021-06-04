@@ -9,17 +9,26 @@ namespace API.Controllers
 {
     public class CustomersController : BaseApiController
     {
-        private readonly ICustomerRepository _customerRepository;
-        public CustomersController(ICustomerRepository customerRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public CustomersController(IUnitOfWork unitOfWork)
         {
-            _customerRepository = customerRepository;
+            _unitOfWork = unitOfWork;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerDto>>> GetCustomers()
         {
-            var customers = await _customerRepository.GetCustomersAsync();
+            var customers = await _unitOfWork.CustomerRepository.GetCustomersAsync();
 
             return Ok(customers);
+        }
+        [HttpPost("create-customer")]
+        public async Task<ActionResult> CreateCustomer(CustomerDto customer)
+        {
+            _unitOfWork.CustomerRepository.CreateCustomer(customer);
+
+            if (await _unitOfWork.Complete()) return NoContent();
+
+            return BadRequest();
         }
     }
 }
