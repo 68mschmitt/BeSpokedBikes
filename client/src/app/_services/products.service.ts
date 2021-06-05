@@ -19,4 +19,8 @@ export class ProductsService {
   createProduct(product: Product) {
     return this.http.post(this.baseUrl + 'Products/create-product', product);
   }
+
+  updateProduct(product: Product) {
+    return this.http.post(this.baseUrl + 'Products/update-product', product);
+  }
 }

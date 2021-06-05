@@ -39,15 +39,45 @@ export class SalespeopleComponent implements OnInit {
         }
       }
     }
+    this.modalFunction(config);
+  }
+
+  updateSalesPerson(salesPerson: SalesPerson) {
+    const config = {
+      class: 'modal-dialog-centered',
+      initialState: {
+        salesPersonValues: {
+          id: salesPerson.id,
+          firstName: salesPerson.firstName,
+          lastName: salesPerson.lastName,
+          address: salesPerson.address,
+          phone: salesPerson.phone,
+          terminationDate: salesPerson.terminationDate,
+          manager: salesPerson.manager
+        }
+      }
+    }
+    this.modalFunction(config);
+  }
+
+  modalFunction(config: any) {
     this.bsModalRef = this.modalService.show(CreateSalesPersonComponent, config);
     this.bsModalRef.content.salesPersonOutput.subscribe((salesPerson: SalesPerson) => {
       if (salesPerson)
       {
-        this.salesPeopleService.createSalesPerson(salesPerson).subscribe(response => {
-          this.loadSalesPeople();
-        }, error => {
-          console.log(error);
-        });
+        if (salesPerson.id == 0){
+          this.salesPeopleService.createSalesPerson(salesPerson).subscribe(response => {
+            this.loadSalesPeople();
+          }, error => {
+            console.log(error);
+          });
+        } else {
+          this.salesPeopleService.updateSalesPerson(salesPerson).subscribe(response => {
+            this.loadSalesPeople();
+          }, error => {
+            console.log(error);
+          });
+        }
       }
     });
   }

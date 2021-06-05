@@ -19,4 +19,8 @@ export class SalespeopleService {
   createSalesPerson(salesPerson: SalesPerson) {
     return this.http.post(this.baseUrl + 'SalesPeople/create-sales-person', salesPerson);
   }
+
+  updateSalesPerson(salesPerson: SalesPerson) {
+    return this.http.post(this.baseUrl + 'SalesPeople/update-sales-person', salesPerson);
+  }
 }

@@ -17,9 +17,9 @@
                 <td>{{salesPerson.address}}</td>
                 <td>{{salesPerson.phone}}</td>
                 <td>{{salesPerson.startDate | date:'short'}}</td>
-                <td>{{salesPerson.terminationDate != null ? (salesPerson.terminationDate | date:'short') : 'Active'}}</td>
+                <td>{{salesPerson.terminationDate != null ? (salesPerson.terminationDate | date:'shortDate') : 'Active'}}</td>
                 <td>{{salesPerson.manager}}</td>
-                <td class="text-center"><button class="btn btn-info mr-2">Edit</button></td>
+                <td class="text-center"><button class="btn btn-info mr-2" (click)="updateSalesPerson(salesPerson)">Edit</button></td>
             </tr>
         </tbody>
     </table>

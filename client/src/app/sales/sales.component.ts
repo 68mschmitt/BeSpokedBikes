@@ -14,6 +14,7 @@ import { SalesService } from '../_services/sales.service';
 export class SalesComponent implements OnInit {
   sales: Sale[];
   bsModalRef!: BsModalRef;
+  lastQuery = 'date-desc';
 
   constructor(
       private salesService: SalesService, 
@@ -22,11 +23,11 @@ export class SalesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadSales();
+    this.loadSales(this.lastQuery);
   }
 
-  loadSales() {
-    this.salesService.getSales().subscribe((sales: Sale[]) => { this.sales = sales; });
+  loadSales(query: string) {
+    this.salesService.getSales(query).subscribe((sales: Sale[]) => { this.sales = sales; });
   }
 
   createSale() {
@@ -34,7 +35,7 @@ export class SalesComponent implements OnInit {
     this.bsModalRef.content.saleOutput.subscribe((sale: Sale) => {
       if (sale) {
         this.salesService.createSale(sale).subscribe(response => {
-          this.loadSales();
+          this.loadSales(this.lastQuery);
         }, error => {
           console.log(error);
         });

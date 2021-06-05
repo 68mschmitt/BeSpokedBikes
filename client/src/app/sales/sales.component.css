@@ -12,3 +12,8 @@ table {
 .createContainer {
     padding-bottom: 10px;
 }
+
+.sortButton:hover {
+    cursor: pointer;
+    text-decoration: none;
+}

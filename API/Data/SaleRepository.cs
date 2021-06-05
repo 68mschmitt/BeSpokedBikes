@@ -51,7 +51,16 @@ namespace API.Data
 
             query = salesParams.FilterBy switch
             {
-                "last-name" => query.OrderByDescending(s => s.SalesPerson.LastName),
+                "product-desc" => query.OrderByDescending(s => s.Product.Name),
+                "price-desc" => query.OrderByDescending(s => s.Product.SalePrice),
+                "sales-person-desc" => query.OrderByDescending(s => s.SalesPerson.FirstName + s.SalesPerson.LastName),
+                "customer-desc" => query.OrderByDescending(s => s.Customer.FirstName + s.Customer.LastName),
+                "date-desc" => query.OrderByDescending(s => s.SaleDate),
+                "product-asc" => query.OrderBy(s => s.Product.Name),
+                "price-asc" => query.OrderBy(s => s.Product.SalePrice),
+                "sales-person-asc" => query.OrderBy(s => s.SalesPerson.FirstName + s.SalesPerson.LastName),
+                "customer-asc" => query.OrderBy(s => s.Customer.FirstName + s.Customer.LastName),
+                "date-asc" => query.OrderBy(s => s.SaleDate),
                 _ => query.OrderByDescending(s => s.SaleDate)
             };
             

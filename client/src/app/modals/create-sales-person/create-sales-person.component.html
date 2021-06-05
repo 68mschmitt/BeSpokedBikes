@@ -10,6 +10,7 @@
     <app-text-input [formControl]='$any(salesPersonForm.controls["address"])' [label]='"Address"'></app-text-input>
     <app-text-input [formControl]='$any(salesPersonForm.controls["phone"])' [label]='"Phone Number"'></app-text-input>
     <app-text-input [formControl]='$any(salesPersonForm.controls["manager"])' [label]='"Manager"'></app-text-input>
+    <app-date-input *ngIf="salesPersonValues.id != 0" [formControl]='$any(salesPersonForm.controls["terminationDate"])' [label]='"Termination Date"'></app-date-input>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>

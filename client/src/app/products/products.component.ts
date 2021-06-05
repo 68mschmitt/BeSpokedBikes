@@ -41,15 +41,46 @@ export class ProductsComponent implements OnInit {
         }
       }
     }
+    this.modalFunction(config);
+  }
+
+  updateProductModal(product: Product) {
+    const config = {
+      class: 'modal-dialog-centered',
+      initialState: {
+        productValues: {
+          id: product.id,
+          name: product.name,
+          manufacturer: product.manufacturer,
+          style: product.style,
+          purchasePrice: product.purchasePrice,
+          salePrice: product.salePrice,
+          quantityOnHand: product.quantityOnHand,
+          commissionPercentage: product.commissionPercentage
+        }
+      }
+    }
+    this.modalFunction(config);
+  }
+
+  modalFunction(config: any) {
     this.bsModalRef = this.modalService.show(CreateProductModalComponent, config);
     this.bsModalRef.content.productInfo.subscribe((product: Product) => {
       if (product)
       {
-        this.productService.createProduct(product).subscribe(response => {
-          this.loadProducts();
-        }, error => {
-          console.log(error);
-        });
+        if (product.id == 0) {
+          this.productService.createProduct(product).subscribe(response => {
+            this.loadProducts();
+          }, error => {
+            console.log(error);
+          });
+        } else {
+          this.productService.updateProduct(product).subscribe(response => {
+            this.loadProducts();
+          }, error => {
+            console.log(error);
+          });
+        }
       }
     });
   }

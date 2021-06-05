@@ -22,6 +22,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { CreateSaleModalComponent } from './modals/create-sale-modal/create-sale-modal.component';
 import { CreateSalesPersonComponent } from './modals/create-sales-person/create-sales-person.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CreateSalesPersonComponent } from './modals/create-sales-person/create-
     HttpClientModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

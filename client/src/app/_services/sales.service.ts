@@ -12,7 +12,8 @@ export class SalesService {
   constructor(private http: HttpClient) {
   }
 
-  getSales() {
+  getSales(query?: string) {
+    if (query != '' || query != null) return this.http.get<Sale[]>(this.baseUrl + 'sales?FilterBy=' + query);
     return this.http.get<Sale[]>(this.baseUrl + 'sales');
   }
 

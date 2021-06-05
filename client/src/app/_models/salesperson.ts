@@ -5,6 +5,6 @@ export interface SalesPerson {
     address: string;
     phone: string;
     startDate?: string;
-    terminationDate?: string;
+    terminationDate?: Date;
     manager: string;
 }

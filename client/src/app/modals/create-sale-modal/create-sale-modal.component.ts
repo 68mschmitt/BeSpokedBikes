@@ -56,7 +56,6 @@ export class CreateSaleModalComponent implements OnInit {
   }
 
   createSale() {
-    console.log(this.saleValues);
     if (this.saleValues.productId != 0 &&
       this.saleValues.customerId != 0 &&
       this.saleValues.salesPersonId != 0) 

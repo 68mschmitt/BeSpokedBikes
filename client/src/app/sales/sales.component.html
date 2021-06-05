@@ -4,11 +4,11 @@
 <div *ngIf="sales.length > 0">
     <table border="solid">
         <thead>
-            <th>Product</th>
-            <th>Sale Price</th>
-            <th>Sales Person</th>
-            <th>Customer Name</th>
-            <th>Sale Date</th>
+            <th><a class="sortButton" (click)="loadSales('product-desc')">Product</a></th>
+            <th><a class="sortButton" (click)="loadSales('price-desc')">Sale Price</a></th>
+            <th><a class="sortButton" (click)="loadSales('sales-person-desc')">Sales Person</a></th>
+            <th><a class="sortButton" (click)="loadSales('customer-desc')">Customer Name</a></th>
+            <th><a class="sortButton" (click)="loadSales('date-desc')">Sale Date</a></th>
         </thead>
         <tbody *ngFor="let sale of sales">
             <tr>
