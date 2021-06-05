@@ -1,0 +1,25 @@
+<div>
+    <table border="solid">
+        <thead>
+            <th>Item Name</th>
+            <th>Manufacturer</th>
+            <th>Style</th>
+            <th>Purchase Price</th>
+            <th>Sale Price</th>
+            <th>Quantity On Hand</th>
+            <th>Commission Percentage</th>
+        </thead>
+        <tbody *ngFor="let product of products">
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.manufacturer}}</td>
+                <td>{{product.style}}</td>
+                <td>{{product.purchasePrice}}</td>
+                <td>{{product.salePrice}}</td>
+                <td>{{product.quantityOnHand}}</td>
+                <td>{{product.commissionPercentage}}</td>
+                <td class="text-center"><button class="btn btn-info mr-2">Edit</button><button class="btn btn-danger ml-2">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

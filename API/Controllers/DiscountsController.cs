@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Discount>>> GetDiscounts()
+        public async Task<ActionResult<IEnumerable<DiscountDto>>> GetDiscounts()
         {
             return Ok(await _unitOfWork.DiscountRepository.GetDiscountsAsync());
         }

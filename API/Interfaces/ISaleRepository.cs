@@ -8,7 +8,7 @@ namespace API.Interfaces
 {
     public interface ISaleRepository
     {
-         Task<IEnumerable<Sale>> GetSalesAsync(SalesParams salesParams);
+         Task<IEnumerable<SaleDto>> GetSalesAsync(SalesParams salesParams);
          Task CreateSaleAsync(SaleDto sale);
          void DeleteSale(Sale sale);
          Task<Sale> GetSale(int id);

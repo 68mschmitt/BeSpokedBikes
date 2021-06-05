@@ -17,7 +17,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Sale>>> GetSalesAsync([FromQuery] SalesParams salesParams)
+        public async Task<ActionResult<IEnumerable<SaleDto>>> GetSalesAsync([FromQuery] SalesParams salesParams)
         {
             var sales = await _unitOfWork.SaleRepository.GetSalesAsync(salesParams);
 

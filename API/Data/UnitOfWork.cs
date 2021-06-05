@@ -16,7 +16,7 @@ namespace API.Data
 
         public ICustomerRepository CustomerRepository => new CustomerRepository(_context, _mapper);
 
-        public IDiscountRepository DiscountRepository => new DiscountRepository(_context);
+        public IDiscountRepository DiscountRepository => new DiscountRepository(_context, _mapper);
 
         public IProductRepository ProductRepository => new ProductRepository(_context, _mapper);
 

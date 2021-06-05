@@ -1,0 +1,33 @@
+<h1 class="text-center" *ngIf="discounts.length > 0">Discounts</h1>
+<h1 class="text-center" *ngIf="discounts.length == 0">There are no Discounts</h1>
+<div class="createContainer"><button class="btn btn-success">Create discounts</button></div>
+<div *ngIf="discounts.length > 0">
+    <table border="solid">
+        <thead>
+            <th>Product</th>
+            <th>Purchase Price</th>
+            <th>Sale Price</th>
+            <th>Discount Percentage</th>
+            <th>Discounted Price</th>
+            <th>Begin Date</th>
+            <th>End Date</th>
+        </thead>
+        <tbody *ngFor="let discount of discounts">
+            <tr>
+                <td>{{discount.product.name}}</td>
+                <td>{{discount.product.purchasePrice}}</td>
+                <td>{{discount.product.salePrice}}</td>
+                <td>{{discount.discountPercentage}}%</td>
+                <td>{{(discount.product.salePrice) * ((100 - discount.discountPercentage) / 100)}}</td>
+                <td>{{discount.beginDate | date:'short'}}</td>
+                <td>{{discount.endDate | date:'short'}}</td>
+                <td class="text-center"><button class="btn btn-info mr-2">Edit</button><button class="btn btn-danger ml-2">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>

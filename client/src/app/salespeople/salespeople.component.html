@@ -1,0 +1,31 @@
+<h1 class="text-center" *ngIf="salesPeople.length > 0">Sales People</h1>
+<h1 class="text-center" *ngIf="salesPeople.length == 0">There are no Sales People</h1>
+<div class="createContainer"><button class="btn btn-success">Create Sales Person</button></div>
+<div *ngIf="salesPeople.length > 0">
+    <table border="solid">
+        <thead>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Start Date</th>
+            <th>Termination Date</th>
+            <th>Manager</th>
+        </thead>
+        <tbody *ngFor="let salesPerson of salesPeople">
+            <tr>
+                <td>{{salesPerson.firstName}} {{salesPerson.lastName}}</td>
+                <td>{{salesPerson.address}}</td>
+                <td>{{salesPerson.phone}}</td>
+                <td>{{salesPerson.startDate | date:'short'}}</td>
+                <td>{{salesPerson.terminationDate != null ? (salesPerson.terminationDate | date:'short') : 'Active'}}</td>
+                <td>{{salesPerson.manager}}</td>
+                <td class="text-center"><button class="btn btn-info mr-2">Edit</button><button class="btn btn-danger ml-2">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>

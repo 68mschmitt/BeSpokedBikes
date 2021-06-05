@@ -1,0 +1,14 @@
+td {
+    padding: 10px;
+}
+
+th {
+    padding: 10px;
+}
+table {
+    width: 100%;
+}
+
+.createSaleContainer {
+    padding-bottom: 10px;
+}

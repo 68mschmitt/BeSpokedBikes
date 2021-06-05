@@ -1,0 +1,29 @@
+<h1 class="text-center" *ngIf="sales.length > 0">Sales</h1>
+<h1 class="text-center" *ngIf="sales.length == 0">There are no Sales</h1>
+<div class="createSaleContainer"><button class="btn btn-success">Create Sale</button></div>
+<div *ngIf="sales.length > 0">
+    <table border="solid">
+        <thead>
+            <th>Product</th>
+            <th>Sale Price</th>
+            <th>Sales Person</th>
+            <th>Customer Name</th>
+            <th>Sale Date</th>
+        </thead>
+        <tbody *ngFor="let sale of sales">
+            <tr>
+                <td>{{sale.product.name}}</td>
+                <td>{{sale.product.salePrice}}</td>
+                <td>{{sale.salesPerson.firstName}} {{sale.salesPerson.lastName}}</td>
+                <td>{{sale.customer.fullName}}</td>
+                <td>{{sale.saleDate | date:'short'}}</td>
+                <td class="text-center"><button class="btn btn-info mr-2">Edit</button><button class="btn btn-danger ml-2">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>

@@ -7,6 +7,7 @@ using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper.QueryableExtensions;
 
 namespace API.Data
 {
@@ -40,7 +41,7 @@ namespace API.Data
             return await _context.Sales.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Sale>> GetSalesAsync(SalesParams salesParams)
+        public async Task<IEnumerable<SaleDto>> GetSalesAsync(SalesParams salesParams)
         {
             var query = _context.Sales
                 .Include(s => s.SalesPerson)
@@ -50,11 +51,11 @@ namespace API.Data
 
             query = salesParams.FilterBy switch
             {
-                "sales-last-name" => query.OrderByDescending(s => s.SalesPerson.LastName),
+                "last-name" => query.OrderByDescending(s => s.SalesPerson.LastName),
                 _ => query.OrderByDescending(s => s.SaleDate)
             };
-
-            return await query.ToListAsync();
+            
+            return await query.ProjectTo<SaleDto>(_mapper.ConfigurationProvider).ToListAsync();
         }
     }
 }
