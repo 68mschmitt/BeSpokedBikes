@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 })
 export class CustomerService {
   baseUrl = environment.apiUrl;
-  customers: Customer[] = [];
 
   constructor(private http: HttpClient) { }
 

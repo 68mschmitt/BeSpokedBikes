@@ -1,1 +1,14 @@
-<p>reports works!</p>
+<h1 class="text-center mb-5">Commission Report</h1>
+<div *ngIf="commissionReport">
+    <h3 class="text-center mb-5">Commission for {{commissionReport.startDate | date:'mediumDate'}} - {{commissionReport.endDate | date:'mediumDate'}}</h3>
+    <table border="solid">
+        <thead>
+            <th>Sales Person</th>
+            <th>Commission</th>
+        </thead>
+        <tbody *ngFor="let salesPerson of commissionReport.salesPeople">
+            <td>{{salesPerson.fullName}}</td>
+            <td style="color: green;">${{salesPerson.commission}}</td>
+        </tbody>
+    </table>
+</div>

@@ -8,10 +8,8 @@ import { Sale } from '../_models/sale';
 })
 export class SalesService {
   baseUrl = environment.apiUrl;
-  sales: Sale[];
 
   constructor(private http: HttpClient) {
-    this.sales = [];
   }
 
   getSales() {

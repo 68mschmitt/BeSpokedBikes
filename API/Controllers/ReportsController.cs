@@ -16,6 +16,7 @@ namespace API.Controllers
         [HttpGet]
         public ActionResult<SalesReportDto> GetCommissionReport(DateTime date)
         {
+            if (date == new DateTime()) date = DateTime.UtcNow;
             var report = _unitOfWork.ReportRepository.GetSalesReport(date);
 
             if (report != null) return Ok(report);

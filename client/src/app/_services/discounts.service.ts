@@ -8,10 +8,8 @@ import { Discount } from '../_models/discount';
 })
 export class DiscountsService {
   baseUrl = environment.apiUrl;
-  discounts: Discount[];
 
   constructor(private http: HttpClient) {
-    this.discounts = [];
   }
 
   getDiscounts() {

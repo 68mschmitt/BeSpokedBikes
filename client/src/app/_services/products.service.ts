@@ -8,10 +8,8 @@ import { Product } from '../_models/product';
 })
 export class ProductsService {
   baseUrl = environment.apiUrl;
-  products: Product[];
 
   constructor(private http: HttpClient) {
-    this.products = [];
   }
 
   getProducts() {

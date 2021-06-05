@@ -8,10 +8,8 @@ import { SalesPerson } from '../_models/salesperson';
 })
 export class SalespeopleService {
   baseUrl = environment.apiUrl;
-  salesPeople: SalesPerson[];
 
   constructor(private http: HttpClient) {
-    this.salesPeople = [];
   }
 
   getSalesPeople() {
