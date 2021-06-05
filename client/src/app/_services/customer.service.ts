@@ -14,4 +14,8 @@ export class CustomerService {
   getCustomers() {
     return this.http.get<Customer[]>(this.baseUrl + 'customers');
   }
+
+  updateCustomer(customer: Customer) {
+    return this.http.post(this.baseUrl + 'Customers/create-customer', customer);
+  }
 }

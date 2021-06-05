@@ -1,6 +1,6 @@
 <h1 class="text-center" *ngIf="customers.length > 0">Customers</h1>
 <h1 class="text-center" *ngIf="customers.length == 0">There are no customers</h1>
-<div class="createContainer"><button class="btn btn-success">Create Customer</button></div>
+<div class="createContainer"><button class="btn btn-success" (click)="createCustomerModal()">Create Customer</button></div>
 <div *ngIf="customers.length > 0">
     <table border="solid">
         <thead>
@@ -13,7 +13,7 @@
                 <td>{{customer.fullName}}</td>
                 <td>{{customer.address}}</td>
                 <td>{{customer.phone}}</td>
-                <td class="text-center"><button class="btn btn-info mr-2">Edit</button><button class="btn btn-danger ml-2">Delete</button></td>
+                <td class="text-center"><button class="btn btn-info mr-2">Edit</button></td>
             </tr>
         </tbody>
     </table>

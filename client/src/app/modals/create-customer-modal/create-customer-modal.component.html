@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Create Customer</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <app-text-input [formControl]='$any(registerForm.controls["firstName"])' [label]='"First Name"'></app-text-input>
+    <app-text-input [formControl]='$any(registerForm.controls["lastName"])' [label]='"Last Name"'></app-text-input>
+    <app-text-input [formControl]='$any(registerForm.controls["address"])' [label]='"Address"'></app-text-input>
+    <app-text-input [formControl]='$any(registerForm.controls["phone"])' [label]='"Phone Number"'></app-text-input>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="updateCustomerInfo()">Submit</button>
+</div>

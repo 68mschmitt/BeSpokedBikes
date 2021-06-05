@@ -4,10 +4,10 @@ import { SalesPerson } from "./salesperson";
 
 export interface Sale {
     productId: number;
-    product: Product;
+    product?: Product;
     salesPersonId: number;
-    salesPerson: SalesPerson;
+    salesPerson?: SalesPerson;
     customerId: number;
-    customer: Customer;
-    saleDate: Date;
+    customer?: Customer;
+    saleDate?: string;
 }

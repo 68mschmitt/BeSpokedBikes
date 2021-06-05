@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CreateSalesPersonComponent } from '../modals/create-sales-person/create-sales-person.component';
 import { SalesPerson } from '../_models/salesperson';
 import { SalespeopleService } from '../_services/salespeople.service';
 
@@ -9,8 +11,9 @@ import { SalespeopleService } from '../_services/salespeople.service';
 })
 export class SalespeopleComponent implements OnInit {
   salesPeople: SalesPerson[];
+  bsModalRef!: BsModalRef;
 
-  constructor(private salesPeopleService: SalespeopleService) {
+  constructor(private salesPeopleService: SalespeopleService, private modalService: BsModalService) {
     this.salesPeople = [];
   }
 
@@ -20,6 +23,33 @@ export class SalespeopleComponent implements OnInit {
 
   loadSalesPeople() {
     this.salesPeopleService.getSalesPeople().subscribe((salesPeople: SalesPerson[]) => { this.salesPeople = salesPeople; });
+  }
+
+  openModal() {
+    const config = {
+      class: 'modal-dialog-centered',
+      initialState: {
+        salesPersonValues: {
+          id: 0,
+          firstName: '',
+          lastName: '',
+          address: '',
+          phone: '',
+          manager: ''
+        }
+      }
+    }
+    this.bsModalRef = this.modalService.show(CreateSalesPersonComponent, config);
+    this.bsModalRef.content.salesPersonOutput.subscribe((salesPerson: SalesPerson) => {
+      if (salesPerson)
+      {
+        this.salesPeopleService.createSalesPerson(salesPerson).subscribe(response => {
+          this.loadSalesPeople();
+        }, error => {
+          console.log(error);
+        });
+      }
+    });
   }
 
 }

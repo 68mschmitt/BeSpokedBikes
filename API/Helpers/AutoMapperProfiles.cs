@@ -9,7 +9,7 @@ namespace API.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<Customer, CustomerDto>()
-                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FirstName + ' ' + src.LastName));
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FirstName + ' ' + src.LastName)).ReverseMap();
             CreateMap<ProductDto, Product>().ReverseMap();
             CreateMap<SalesPersonDto, SalesPerson>().ReverseMap();
             CreateMap<SaleDto, Sale>().ReverseMap();

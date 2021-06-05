@@ -15,4 +15,8 @@ export class ProductsService {
   getProducts() {
     return this.http.get<Product[]>(this.baseUrl + 'products');
   }
+
+  createProduct(product: Product) {
+    return this.http.post(this.baseUrl + 'Products/create-product', product);
+  }
 }

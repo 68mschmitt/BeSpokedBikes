@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Create Product</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <app-text-input [formControl]='$any(productForm.controls["name"])' [label]='"Name"'></app-text-input>
+    <app-text-input [formControl]='$any(productForm.controls["manufacturer"])' [label]='"Manufacturer"'></app-text-input>
+    <app-text-input [formControl]='$any(productForm.controls["style"])' [label]='"Style"'></app-text-input>
+    <app-text-input [formControl]='$any(productForm.controls["purchasePrice"])' [label]='"Purchase Price"'></app-text-input>
+    <app-text-input [formControl]='$any(productForm.controls["salePrice"])' [label]='"Sale Price"'></app-text-input>
+    <app-text-input [formControl]='$any(productForm.controls["quantityOnHand"])' [label]='"Quantity On Hand"'></app-text-input>
+    <app-text-input [formControl]='$any(productForm.controls["commissionPercentage"])' [label]='"Commission Percentage"'></app-text-input>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="updateProductInfo()">Submit</button>
+</div>

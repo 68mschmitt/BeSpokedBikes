@@ -1,6 +1,6 @@
 <h1 class="text-center" *ngIf="salesPeople.length > 0">Sales People</h1>
 <h1 class="text-center" *ngIf="salesPeople.length == 0">There are no Sales People</h1>
-<div class="createContainer"><button class="btn btn-success">Create Sales Person</button></div>
+<div class="createContainer"><button class="btn btn-success" (click)="openModal()">Create Sales Person</button></div>
 <div *ngIf="salesPeople.length > 0">
     <table border="solid">
         <thead>
@@ -19,7 +19,7 @@
                 <td>{{salesPerson.startDate | date:'short'}}</td>
                 <td>{{salesPerson.terminationDate != null ? (salesPerson.terminationDate | date:'short') : 'Active'}}</td>
                 <td>{{salesPerson.manager}}</td>
-                <td class="text-center"><button class="btn btn-info mr-2">Edit</button><button class="btn btn-danger ml-2">Delete</button></td>
+                <td class="text-center"><button class="btn btn-info mr-2">Edit</button></td>
             </tr>
         </tbody>
     </table>

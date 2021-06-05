@@ -15,4 +15,8 @@ export class SalesService {
   getSales() {
     return this.http.get<Sale[]>(this.baseUrl + 'sales');
   }
+
+  createSale(sale: Sale) {
+    return this.http.post(this.baseUrl + 'Sales', sale);
+  }
 }

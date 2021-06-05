@@ -1,6 +1,6 @@
 <h1 class="text-center" *ngIf="products.length > 0">Products</h1>
 <h1 class="text-center" *ngIf="products.length == 0">There are no Products</h1>
-<div class="createContainer"><button class="btn btn-success">Create Product</button></div>
+<div class="createContainer"><button class="btn btn-success" (click)="showProductModal()">Create Product</button></div>
 <div *ngIf="products.length > 0">
     <table border="solid">
         <thead>
@@ -21,7 +21,7 @@
                 <td>{{product.salePrice}}</td>
                 <td>{{product.quantityOnHand}}</td>
                 <td>{{product.commissionPercentage}}</td>
-                <td class="text-center"><button class="btn btn-info mr-2">Edit</button><button class="btn btn-danger ml-2">Delete</button></td>
+                <td class="text-center"><button class="btn btn-info mr-2">Edit</button></td>
             </tr>
         </tbody>
     </table>
