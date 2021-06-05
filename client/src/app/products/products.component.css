@@ -8,3 +8,6 @@ th {
 table {
     width: 100%;
 }
+.createContainer {
+    padding-bottom: 10px;
+}
