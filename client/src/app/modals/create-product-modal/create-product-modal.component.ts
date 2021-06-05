@@ -27,10 +27,10 @@ export class CreateProductModalComponent implements OnInit {
       name: [this.productValues.name, Validators.required],
       manufacturer: [this.productValues.manufacturer, Validators.required],
       style: [this.productValues.style, Validators.required],
-      purchasePrice: [(this.productValues.purchasePrice == 0) ? '' : this.productValues.purchasePrice, Validators.required],
-      salePrice: [(this.productValues.salePrice == 0) ? '' : this.productValues.salePrice, Validators.required],
-      quantityOnHand: [(this.productValues.quantityOnHand == 0) ? '' : this.productValues.quantityOnHand, Validators.required],
-      commissionPercentage: [(this.productValues.commissionPercentage == 0) ? '' : this.productValues.commissionPercentage, Validators.required]
+      purchasePrice: [(this.productValues.purchasePrice == 0) ? '' : this.productValues.purchasePrice, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      salePrice: [(this.productValues.salePrice == 0) ? '' : this.productValues.salePrice, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      quantityOnHand: [(this.productValues.quantityOnHand == 0) ? '' : this.productValues.quantityOnHand, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      commissionPercentage: [(this.productValues.commissionPercentage == 0) ? '' : this.productValues.commissionPercentage, [Validators.required, Validators.pattern("^[0-9]*$")]]
     });
   }
 

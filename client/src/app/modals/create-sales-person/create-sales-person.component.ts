@@ -38,10 +38,12 @@ export class CreateSalesPersonComponent implements OnInit {
 
   createSalesPerson() {
     if (this.salesPersonForm.valid) {
-      if (this.salesPersonForm.value.terminationDate != ''){
+      if (this.salesPersonForm.value.terminationDate != '' && this.salesPersonForm.value.terminationDate != null){
         const datepipe: DatePipe = new DatePipe('en-US');
         this.salesPersonForm.value.terminationDate = datepipe.transform(this.salesPersonForm.value.terminationDate, 'YYYY-MM-dd') + 'T00:00:00Z';
         console.log(this.salesPersonForm.value.terminationDate);
+      } else {
+        this.salesPersonForm.value.terminationDate = null;
       }
       this.salesPersonOutput.emit(this.salesPersonForm.value);
       this.bsModalRef.hide();
